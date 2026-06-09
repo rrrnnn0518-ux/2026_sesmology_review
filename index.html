@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 地震學課程學習歷程回顧</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 導覽列 -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-earth-asia"></i> 2026 地震學回顧
+            </div>
+            <div class="nav-links">
+                <a href="#hero">首頁</a>
+                <a href="#timeline">課程時間軸</a>
+                <a href="#assignments">作業成果</a>
+                <a href="#visits">參訪活動</a>
+                <a href="#tools">AI與工具</a>
+                <a href="#interactive">互動專區</a>
+                <a href="#reflection">學習反思</a>
+            </div>
+            <div style="display:flex; gap: 15px; align-items:center;">
+                <button class="theme-toggle" id="theme-toggle" title="切換深色/淺色模式">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="menu-toggle" id="menu-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首頁 Hero 區塊 -->
+    <section id="hero" class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge-pulse">Course Portfolio</div>
+                <h1 class="hero-title">2026 地震學課程<br>學習歷程回顧</h1>
+                <h2 class="hero-subtitle">從地震學基礎、AI工具應用，到震源機制與自製地震儀的整學期探索</h2>
+                <p class="hero-desc">這個網站記錄我在本學期地震學課程中的學習歷程，包含每週課程主題、作業成果、參訪心得、AI工具應用，以及 GitHub Pages 與 Hugging Face Space 的網頁部署成果。</p>
+                <div class="hero-btns">
+                    <a href="#timeline" class="btn btn-primary"><i class="fa-solid fa-route"></i> 查看課程時間軸</a>
+                    <a href="#assignments" class="btn btn-outline"><i class="fa-solid fa-folder-open"></i> 瀏覽作業成果</a>
+                    <a href="#interactive" class="btn btn-outline"><i class="fa-solid fa-gamepad"></i> 前往互動專區</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 課程時間軸 Timeline -->
+    <section id="timeline" class="section-bg">
+        <div class="container">
+            <h2 class="section-title">課程時間軸</h2>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">全部展開</button>
+                <button class="filter-btn" data-filter="theory">地震學理論</button>
+                <button class="filter-btn" data-filter="assignment">作業與報告</button>
+                <button class="filter-btn" data-filter="visit">參訪活動</button>
+                <button class="filter-btn" data-filter="ai">AI與工具學習</button>
+            </div>
+            
+            <div class="timeline">
+                <!-- 0225 -->
+                <div class="timeline-item" data-category="theory ai assignment">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">02/25 課程</span>
+                        <h3>課程簡介與環境建置</h3>
+                        <ul class="timeline-list">
+                            <li>上課方式說明與老師自我介紹</li>
+                            <li>安裝相關軟體、Antigravity 安裝與使用</li>
+                            <li>Gemini、NotebookLM 介紹</li>
+                            <li>GitHub Pages 與 Hugging Face Space 的初步概念</li>
+                        </ul>
+                        <a href="#assignments" class="timeline-link"><i class="fa-solid fa-link"></i> 作業1：軟體安裝與帳號申請</a>
+                    </div>
+                </div>
+
+                <!-- 0304 -->
+                <div class="timeline-item" data-category="theory ai assignment">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">03/04 課程</span>
+                        <h3>地震學第一章與網頁部署</h3>
+                        <ul class="timeline-list">
+                            <li>地震學第一章導讀</li>
+                            <li>利用 NotebookLM + Google Gemini GEM 製作課程問答系統</li>
+                            <li>網頁與程式分別部署於 GitHub Pages 與 Hugging Face Space</li>
+                        </ul>
+                        <a href="#assignments" class="timeline-link"><i class="fa-solid fa-link"></i> 作業2：第一章導讀與 GitHub Pages 部署</a>
+                    </div>
+                </div>
+
+                <!-- 0311 -->
+                <div class="timeline-item" data-category="theory ai assignment">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">03/11 課程</span>
+                        <h3>AI 工具應用與比較</h3>
+                        <ul class="timeline-list">
+                            <li>地震學第一章說明</li>
+                            <li>張睿明博士 AI 演講：AI 工具於學習與研究中的應用</li>
+                            <li>Gemini、ChatGPT、Grok、Claude 等模型比較</li>
+                            <li>Deep Research、IDE、CLI 等多 agent 工作模式</li>
+                        </ul>
+                        <a href="#assignments" class="timeline-link"><i class="fa-solid fa-link"></i> 作業3：張睿明老師演講心得</a>
+                    </div>
+                </div>
+
+                <!-- 0318 -->
+                <div class="timeline-item" data-category="ai">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">03/18 課程</span>
+                        <h3>AI 防災與專題討論</h3>
+                        <ul class="timeline-list">
+                            <li>農業部農村發展與水土保持署 AI 演講分享</li>
+                            <li>每週專題討論日程</li>
+                            <li>AI 與防災、研究平台應用</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 0325 -->
+                <div class="timeline-item" data-category="theory assignment">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">03/25 課程</span>
+                        <h3>震測實驗與 ObsPy 基礎</h3>
+                        <ul class="timeline-list">
+                            <li>震測實驗心得撰寫</li>
+                            <li>地震學課本第 2 章介紹</li>
+                            <li>ObsPy 套件示範</li>
+                            <li>利用 Antigravity 撰寫心得報告</li>
+                        </ul>
+                        <a href="#assignments" class="timeline-link"><i class="fa-solid fa-link"></i> 作業4：地震學實驗心得分享</a>
+                    </div>
+                </div>
+
+                <!-- 0401 -->
+                <div class="timeline-item" data-category="visit assignment">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">04/01 課程</span>
+                        <h3>國家地震工程研究中心參訪</h3>
+                        <ul class="timeline-list">
+                            <li>參觀國家地震工程研究中心</li>
+                            <li>認識耐震設計、阻尼器、結構反應與地震工程應用</li>
+                        </ul>
+                        <a href="#assignments" class="timeline-link"><i class="fa-solid fa-link"></i> 作業5：參觀國家地震工程研究中心心得分享</a>
+                    </div>
+                </div>
+
+                <!-- 0408 -->
+                <div class="timeline-item" data-category="theory">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">04/08 課程</span>
+                        <h3>地震波特性與波相</h3>
+                        <ul class="timeline-list">
+                            <li>反射係數與折射係數、極性與振幅變化</li>
+                            <li>P波與S波特性、Radial / Transverse component</li>
+                            <li>PKIKP、PKP、ScS、PcP 等地震波相</li>
+                            <li>探討為什麼 ScS 波相比 PcP 波相明顯</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 0415 -->
+                <div class="timeline-item" data-category="theory">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">04/15 課程</span>
+                        <h3>期中考與報告</h3>
+                        <ul class="timeline-list">
+                            <li>期中考</li>
+                            <li>期中報告</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 0422 -->
+                <div class="timeline-item" data-category="theory assignment">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">04/22 課程</span>
+                        <h3>應力應變與防災外交</h3>
+                        <ul class="timeline-list">
+                            <li>期中考卷檢討、應力、應變與地震學課程複習</li>
+                            <li>宋冠毅老師經驗分享：防災外交與國際研究經驗</li>
+                        </ul>
+                        <a href="#assignments" class="timeline-link"><i class="fa-solid fa-link"></i> 作業6：宋冠毅老師演講心得</a>
+                    </div>
+                </div>
+
+                <!-- 0429 -->
+                <div class="timeline-item" data-category="theory assignment ai">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">04/29 課程</span>
+                        <h3>走時曲線與速度構造</h3>
+                        <ul class="timeline-list">
+                            <li>安裝 miniconda</li>
+                            <li>地震波走時曲線理論、地震學第3章報告</li>
+                            <li>Antigravity_files_latest</li>
+                        </ul>
+                        <a href="#assignments" class="timeline-link"><i class="fa-solid fa-link"></i> 作業7：地震學第3章報告</a>
+                    </div>
+                </div>
+
+                <!-- 0506 -->
+                <div class="timeline-item" data-category="theory">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">05/06 課程</span>
+                        <h3>地震學第3章課堂報告</h3>
+                        <ul class="timeline-list">
+                            <li>地震學第3章報告時程表</li>
+                            <li>探討高速與低速構造造成地震波偏折</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 0513 -->
+                <div class="timeline-item" data-category="theory assignment">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">05/13 課程</span>
+                        <h3>震源機制解與 Stereonet</h3>
+                        <ul class="timeline-list">
+                            <li>地震學課本第4章導讀</li>
+                            <li>手繪震源機制球、震源機制解介紹、stereonet 繪製</li>
+                            <li>台灣地震科學中心與中央氣象署地震測報中心資料</li>
+                        </ul>
+                        <a href="#assignments" class="timeline-link"><i class="fa-solid fa-link"></i> 作業8：繪製震源機制球</a><br>
+                        <a href="#assignments" class="timeline-link" style="margin-top:5px;"><i class="fa-solid fa-link"></i> 作業9：地震學第4章 4.1 與 4.2 報告</a>
+                    </div>
+                </div>
+
+                <!-- 0520 -->
+                <div class="timeline-item" data-category="theory assignment">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">05/20 課程</span>
+                        <h3>初動解與自製地震儀說明</h3>
+                        <ul class="timeline-list">
+                            <li>地震學課本 4.1 與 4.2 報告、震源機制作業報告</li>
+                            <li>Raspberry Pi 實驗說明，自製地震儀</li>
+                            <li>透過 Pfile 繪製初動解震源機制球</li>
+                        </ul>
+                        <a href="https://oceanicdayi.github.io/0520Seismology_class/" target="_blank" class="timeline-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 作業10：初動解繪製震源機制 (前往網站)</a>
+                    </div>
+                </div>
+
+                <!-- 0527 -->
+                <div class="timeline-item" data-category="theory ai">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">05/27 課程</span>
+                        <h3>Raspberry Pi 硬體實戰</h3>
+                        <ul class="timeline-list">
+                            <li>Raspberry Pi 實戰教學、UART、GPIO 腳位</li>
+                            <li>MPU6050 感測器應用</li>
+                            <li>自製地震儀相關硬體與感測器基礎</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 0603 -->
+                <div class="timeline-item" data-category="theory ai assignment">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">06/03 課程</span>
+                        <h3>次世代測報與期末報告</h3>
+                        <ul class="timeline-list">
+                            <li>Overleaf 介紹、Raspberry Pi 安裝 OpenClaw</li>
+                            <li>地震儀與地震規模介紹</li>
+                            <li>AI 代理群與大型語言模型在次世代地震測報之整合與應用</li>
+                        </ul>
+                        <a href="https://oceanicdayi.github.io/2026_seismology_final_report/" target="_blank" class="timeline-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 作業11：期末報告 (前往網站)</a>
+                    </div>
+                </div>
+
+                <!-- 0610 -->
+                <div class="timeline-item" data-category="theory">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">06/10 課程</span>
+                        <h3>期末報告與檢討</h3>
+                        <ul class="timeline-list">
+                            <li>期末報告時程安排與總結</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 0617 -->
+                <div class="timeline-item" data-category="visit">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">06/17 課程活動</span>
+                        <h3>參觀中油公司石油探索館</h3>
+                        <ul class="timeline-list">
+                            <li>地點：台北市信義區松仁路3號1樓</li>
+                            <li>認識石油能源、地質資源、能源開發與生活應用</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 0624 -->
+                <div class="timeline-item" data-category="visit">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">06/24 課程活動</span>
+                        <h3>參觀中央氣象署新北氣象站</h3>
+                        <ul class="timeline-list">
+                            <li>地點：新北市新店區莒光路31號</li>
+                            <li>認識氣象觀測、測站設備、地震與氣象監測系統</li>
+                            <li>中央氣象署在防災上的角色</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 作業成果展示區 -->
+    <section id="assignments">
+        <div class="container">
+            <h2 class="section-title">作業成果</h2>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="搜尋作業名稱或關鍵字...">
+                <button id="search-btn"><i class="fa-solid fa-search"></i></button>
+            </div>
+            <div class="grid-container" id="assignment-grid">
+                
+                <div class="card assignment-card">
+                    <div class="card-header">
+                        <span class="badge">作業 1</span>
+                    </div>
+                    <h3>軟體安裝與帳號申請</h3>
+                    <p>建立地震學課程需要的數位工具環境，包括 Antigravity、GitHub、Hugging Face、AI 平台等。</p>
+                    <div class="tags">
+                        <span class="tag tag-tool">#Antigravity</span>
+                        <span class="tag tag-tool">#GitHub</span>
+                        <span class="tag">#環境建置</span>
+                    </div>
+                    <!-- 註解：未來可將 href="#" 替換為實際連結 -->
+                    <a href="#" class="btn btn-outline card-action">查看詳情</a>
+                </div>
+
+                <div class="card assignment-card">
+                    <div class="card-header">
+                        <span class="badge">作業 2</span>
+                    </div>
+                    <h3>介紹地震學第一章與網頁部署</h3>
+                    <p>將地震學基礎內容整理成網頁，練習用 GitHub Pages 發布學習成果。</p>
+                    <div class="tags">
+                        <span class="tag tag-tool">#GitHub Pages</span>
+                        <span class="tag">#網頁部署</span>
+                    </div>
+                    <a href="#" class="btn btn-outline card-action">查看詳情</a>
+                </div>
+
+                <div class="card assignment-card">
+                    <div class="card-header">
+                        <span class="badge">作業 3</span>
+                    </div>
+                    <h3>張睿明老師 AI 演講心得</h3>
+                    <p>反思 AI 工具如何幫助學習、研究與 prompt 撰寫。</p>
+                    <div class="tags">
+                        <span class="tag tag-tool">#AI應用</span>
+                        <span class="tag">#Prompt撰寫</span>
+                    </div>
+                    <a href="#" class="btn btn-outline card-action">查看詳情</a>
+                </div>
+
+                <div class="card assignment-card">
+                    <div class="card-header">
+                        <span class="badge">作業 4</span>
+                    </div>
+                    <h3>地震學實驗心得分享</h3>
+                    <p>整理震測實驗過程，理解觀測資料、實驗流程與地震波概念。</p>
+                    <div class="tags">
+                        <span class="tag tag-tool">#ObsPy</span>
+                        <span class="tag">#資料觀測</span>
+                    </div>
+                    <a href="#" class="btn btn-outline card-action">查看詳情</a>
+                </div>
+
+                <div class="card assignment-card">
+                    <div class="card-header">
+                        <span class="badge">作業 5</span>
+                    </div>
+                    <h3>國家地震工程研究中心心得</h3>
+                    <p>理解耐震設計、阻尼器、建築物反應譜與 seismic risk。</p>
+                    <div class="tags">
+                        <span class="tag">#地震工程</span>
+                        <span class="tag">#耐震設計</span>
+                    </div>
+                    <a href="#" class="btn btn-outline card-action">查看詳情</a>
+                </div>
+
+                <div class="card assignment-card">
+                    <div class="card-header">
+                        <span class="badge">作業 6</span>
+                    </div>
+                    <h3>宋冠毅老師演講心得</h3>
+                    <p>認識防災外交、國際研究經驗，以及地震科學在社會中的角色。</p>
+                    <div class="tags">
+                        <span class="tag">#防災外交</span>
+                        <span class="tag">#科學社會應用</span>
+                    </div>
+                    <a href="#" class="btn btn-outline card-action">查看詳情</a>
+                </div>
+
+                <div class="card assignment-card">
+                    <div class="card-header">
+                        <span class="badge">作業 7</span>
+                    </div>
+                    <h3>地震學第 3 章報告</h3>
+                    <p>學習地震波走時曲線、地球內部速度構造、高低速層對波線的影響。</p>
+                    <div class="tags">
+                        <span class="tag">#走時曲線</span>
+                        <span class="tag">#速度構造</span>
+                    </div>
+                    <a href="#" class="btn btn-outline card-action">查看詳情</a>
+                </div>
+
+                <div class="card assignment-card">
+                    <div class="card-header">
+                        <span class="badge">作業 8</span>
+                    </div>
+                    <h3>繪製震源機制球</h3>
+                    <p>理解斷層面解、P/T 軸、手繪震源機制球與 stereonet 概念。</p>
+                    <div class="tags">
+                        <span class="tag">#震源機制</span>
+                        <span class="tag">#Stereonet</span>
+                    </div>
+                    <a href="#" class="btn btn-outline card-action">查看詳情</a>
+                </div>
+
+                <div class="card assignment-card">
+                    <div class="card-header">
+                        <span class="badge">作業 9</span>
+                    </div>
+                    <h3>地震學第4章 4.1 與 4.2 報告</h3>
+                    <p>整理震源機制相關理論，理解地震破裂、斷層型態與地震矩概念。</p>
+                    <div class="tags">
+                        <span class="tag">#地震矩</span>
+                        <span class="tag">#斷層型態</span>
+                    </div>
+                    <a href="#" class="btn btn-outline card-action">查看詳情</a>
+                </div>
+
+                <div class="card assignment-card">
+                    <div class="card-header">
+                        <span class="badge">作業 10</span>
+                        <span class="badge" style="background:#28a745">已部署網站</span>
+                    </div>
+                    <h3>初動解繪製震源機制</h3>
+                    <p>透過 P 波初動方向與 Pfile 資料繪製震源機制球，連結觀測資料與地震物理意義。</p>
+                    <div class="tags">
+                        <span class="tag">#初動解</span>
+                        <span class="tag">#觀測資料</span>
+                    </div>
+                    <a href="https://oceanicdayi.github.io/0520Seismology_class/" target="_blank" class="btn btn-primary card-action">前往成果網站</a>
+                </div>
+
+                <div class="card assignment-card">
+                    <div class="card-header">
+                        <span class="badge">作業 11</span>
+                        <span class="badge" style="background:#28a745">期末成果</span>
+                    </div>
+                    <h3>期末報告</h3>
+                    <p>整合整學期學習內容，製作期末成果展示網站。</p>
+                    <div class="tags">
+                        <span class="tag">#綜合應用</span>
+                        <span class="tag tag-tool">#網頁部署</span>
+                    </div>
+                    <a href="https://oceanicdayi.github.io/2026_seismology_final_report/" target="_blank" class="btn btn-primary card-action">前往成果網站</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 參訪活動專區 -->
+    <section id="visits" class="section-bg">
+        <div class="container">
+            <h2 class="section-title">參訪活動</h2>
+            <div class="grid-container">
+                
+                <div class="card visit-card">
+                    <!-- 註解：請確保 images 目錄下有這張圖片 -->
+                    <img src="images/0921f6187a72c37e4581002a6b7be9f6.png" alt="國家地震工程研究中心" class="visit-img" onerror="this.src='https://via.placeholder.com/400x200?text=Image+Not+Found'">
+                    <div class="visit-content">
+                        <span class="visit-date">04/01 參訪</span>
+                        <h3>國家地震工程研究中心</h3>
+                        <p class="visit-location"><i class="fa-solid fa-location-dot"></i> NCREE</p>
+                        <p>實地認識耐震設計、結構反應、阻尼器等地震工程技術及其在防災上的應用。</p>
+                    </div>
+                </div>
+
+                <div class="card visit-card">
+                    <img src="images/97c75d6b677abe233ffcd0a15df3de50.png" alt="中油公司石油探索館" class="visit-img" onerror="this.src='https://via.placeholder.com/400x200?text=Image+Not+Found'">
+                    <div class="visit-content">
+                        <span class="visit-date">06/17 參訪</span>
+                        <h3>中油公司石油探索館</h3>
+                        <p class="visit-location"><i class="fa-solid fa-location-dot"></i> 台北市信義區松仁路3號1樓</p>
+                        <p>了解能源探勘、石油開採、地質資源探索，以及能源與現代生活的密切關係。</p>
+                    </div>
+                </div>
+
+                <div class="card visit-card">
+                    <img src="images/3f917c8ee9a14f0b6540af9cc45c44e4.png" alt="中央氣象署新北氣象站" class="visit-img" onerror="this.src='https://via.placeholder.com/400x200?text=Image+Not+Found'">
+                    <div class="visit-content">
+                        <span class="visit-date">06/24 參訪</span>
+                        <h3>中央氣象署新北氣象站</h3>
+                        <p class="visit-location"><i class="fa-solid fa-location-dot"></i> 新北市新店區莒光路31號</p>
+                        <p>認識第一線的氣象觀測儀器、地震與氣象監測系統，體會中央氣象署在國家防災上的核心角色。</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- AI 與工具學習專區 -->
+    <section id="tools">
+        <div class="container">
+            <h2 class="section-title">AI 工具與數位學習</h2>
+            <p style="text-align:center; max-width: 800px; margin: 0 auto 40px; color: var(--text-light);">
+                這門課不只是學地震學知識，也讓我練習如何把 AI 工具、程式語言、網頁部署與科學學習整合起來，提升資料處理與表達的能力。
+            </p>
+            <div class="tools-grid">
+                
+                <div class="tool-card"><i class="fa-solid fa-terminal tool-icon"></i><h4>Google Antigravity</h4><p>協助自動化產生與修改網頁程式碼</p></div>
+                <div class="tool-card"><i class="fa-brands fa-github tool-icon"></i><h4>GitHub Pages</h4><p>部署主要靜態網站與學習成果展示</p></div>
+                <div class="tool-card"><i class="fa-solid fa-face-smile tool-icon"></i><h4>Hugging Face Space</h4><p>放置互動式 AI 問答與課程小工具</p></div>
+                <div class="tool-card"><i class="fa-solid fa-brain tool-icon"></i><h4>Google Gemini</h4><p>協助整理課文、撰寫報告與程式碼除錯</p></div>
+                <div class="tool-card"><i class="fa-solid fa-book tool-icon"></i><h4>NotebookLM</h4><p>建立專屬的課程文獻問答系統</p></div>
+                <div class="tool-card"><i class="fa-solid fa-robot tool-icon"></i><h4>ChatGPT / Claude</h4><p>比較不同 LLM 模型在科學問題上的表現</p></div>
+                <div class="tool-card"><i class="fa-solid fa-code tool-icon"></i><h4>GitHub Copilot CLI</h4><p>體驗終端機環境下的多 Agent 工作模式</p></div>
+                <div class="tool-card"><i class="fa-solid fa-file-pdf tool-icon"></i><h4>Overleaf</h4><p>學習使用 LaTeX 進行專業報告排版</p></div>
+                <div class="tool-card"><i class="fa-brands fa-raspberry-pi tool-icon"></i><h4>Raspberry Pi</h4><p>結合硬體感測器自製簡易微型地震儀</p></div>
+                <div class="tool-card"><i class="fa-solid fa-microchip tool-icon"></i><h4>OpenClaw</h4><p>認識次世代地震測報軟硬體整合系統</p></div>
+                <div class="tool-card"><i class="fa-brands fa-python tool-icon"></i><h4>ObsPy</h4><p>處理地震波形與觀測資料的 Python 套件</p></div>
+                <div class="tool-card"><i class="fa-brands fa-google tool-icon"></i><h4>Google Colab</h4><p>雲端執行 Python 進行數據分析</p></div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Hugging Face Space 互動專區 -->
+    <section id="interactive" class="section-bg">
+        <div class="container">
+            <h2 class="section-title">互動專區</h2>
+            
+            <div class="interactive-layout">
+                <!-- 左側：Hugging Face 預留區 -->
+                <div class="interactive-box">
+                    <h3><i class="fa-solid fa-comment-dots"></i> 地震學 AI 問答助手</h3>
+                    <p style="margin-bottom: 15px; color: var(--text-light); font-size:0.9rem;">在這裡可以輸入地震學問題，AI 助手將即時為您解答。（嵌入自 Hugging Face Space）</p>
+                    
+                    <div class="iframe-container">
+                        <div class="iframe-placeholder">
+                            <i class="fa-solid fa-code" style="font-size: 3rem; margin-bottom: 10px;"></i>
+                            <p>Hugging Face Space 載入區</p>
+                            <p style="font-size: 0.8rem;">(請在 index.html 中替換 iframe src 連結)</p>
+                        </div>
+                        <!-- 註解：請將 src 替換為您的 Hugging Face Space 網址 -->
+                        <!-- <iframe src="https://hf.space/embed/your-username/your-space-name" frameborder="0"></iframe> -->
+                    </div>
+                    <button class="copy-btn" id="copy-iframe"><i class="fa-solid fa-copy"></i> 複製 iframe 程式碼</button>
+                </div>
+
+                <!-- 右側：互動小測驗與進度 -->
+                <div class="interactive-box" style="display: flex; flex-direction: column;">
+                    <h3><i class="fa-solid fa-pen-to-square"></i> 震源機制小測驗</h3>
+                    <div class="quiz-container">
+                        <h4 id="quiz-question" class="quiz-question active">載入中...</h4>
+                        <div id="quiz-options" class="quiz-options"></div>
+                        <p id="quiz-feedback" style="margin-top: 15px; font-weight: bold; display: none;"></p>
+                        <div class="quiz-controls">
+                            <button id="next-quiz" class="btn btn-primary" style="display: none; padding: 8px 16px;">下一題</button>
+                            <h4 id="quiz-score" style="display: none; color: var(--primary-color);"></h4>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: auto; padding-top: 40px;">
+                        <h3><i class="fa-solid fa-lightbulb"></i> 我這學期學到了什麼？</h3>
+                        <div class="random-harvest">
+                            <button id="harvest-btn" class="btn btn-outline">點擊隨機顯示學習收穫</button>
+                            <div id="harvest-text">探索地震學與科技的奧秘...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 我的學習反思區 -->
+    <section id="reflection">
+        <div class="container">
+            <h2 class="section-title">學期總反思</h2>
+            <div class="reflection-content">
+                <p>一開始對地震學的理解，比較偏向課堂上硬梆梆的課本知識，覺得只是在背誦波的性質與地球內部構造。但透過這學期的課程，我逐漸理解地震學其實連結了觀測、理論、程式碼、工程防護、防災觀念，甚至社會應用。</p>
+                <p>在使用 AI 工具的過程中，它們讓我更容易整理複雜概念、釐清盲點；但也讓我深刻意識到，自己必須具備判斷 AI 產出好壞的專業能力，否則很容易被錯誤資訊誤導。</p>
+                <p>透過 GitHub Pages 與 Hugging Face Space，我開始把作業從單純的「交給老師看的文字報告」，轉變成可以被公開瀏覽、互動與展示的「學習成果作品集」，這種轉換非常有成就感。</p>
+                <p>此外，參訪國家地震工程研究中心、中油石油探索館與中央氣象署新北氣象站，讓我真正走出教室，看到地球科學知識在真實社會中的應用與重量。</p>
+                <p><strong>總結來說：</strong>這門課讓我不只是學習地震學理論，更學會了如何用現代化數位工具來整理、反思、表達與延伸自己的學習軌跡。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="back-to-top" id="back-to-top" title="回到頂部">
+                <i class="fa-solid fa-arrow-up"></i>
+            </div>
+            <p>&copy; 2026 地震學課程學習歷程回顧 | Designed with Antigravity & AI Tools</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
