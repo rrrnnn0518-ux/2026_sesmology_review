@@ -384,3 +384,80 @@ footer { background: var(--surface-color); padding: 60px 0 30px; border-top: 1px
 @keyframes pop-up {
     100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
 }
+
+
+/* --- Seismic Interactive Area --- */
+.seismic-interactive-area {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: var(--card-bg);
+    border: 2px dashed var(--border-color);
+    border-radius: 15px;
+    cursor: crosshair;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.seismic-interactive-area:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(26,115,232,0.2);
+}
+
+.seismic-instructions {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    pointer-events: none; /* Let clicks pass through */
+    z-index: 10;
+}
+
+.ripple-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Let clicks pass through */
+}
+
+.seismic-ripple {
+    position: absolute;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+    animation: ripple-expand 2s ease-out forwards;
+}
+
+@keyframes ripple-expand {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 0.8; }
+    100% { transform: translate(-50%, -50%) scale(5); opacity: 0; }
+}
+
+.harvest-reveal {
+    position: absolute;
+    transform: translate(-50%, 0);
+    background: var(--card-bg);
+    color: var(--text-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    font-weight: bold;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    opacity: 0;
+    animation: float-up 2.5s ease-out forwards;
+    z-index: 20;
+    border: 1px solid var(--border-color);
+}
+
+@keyframes float-up {
+    0% { opacity: 0; transform: translate(-50%, 20px); }
+    20% { opacity: 1; transform: translate(-50%, 0); }
+    80% { opacity: 1; transform: translate(-50%, -20px); }
+    100% { opacity: 0; transform: translate(-50%, -40px); }
+}
