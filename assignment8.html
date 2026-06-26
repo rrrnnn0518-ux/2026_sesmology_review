@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作業 8 - 繪製震源機制球 | 2026 地震學回顧</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .assignment-hero {
+            padding: 120px 20px 60px;
+            text-align: center;
+            background: var(--surface-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .assignment-title {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        .assignment-subtitle {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .content-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .report-card {
+            background: var(--surface-color);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
+        }
+        .report-card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+        .report-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+        .report-content p {
+            margin-bottom: 18px;
+            text-align: justify;
+            text-indent: 2em;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: var(--text-color);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        .section-heading {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-top: 25px;
+            margin-bottom: 10px;
+            text-indent: 0 !important;
+        }
+
+        /* 專屬特效：互動震源機制球 (Beachball) */
+        .beachball-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(0,0,0,0.02);
+            border-radius: 16px;
+            border: 1px dashed var(--border-color);
+            cursor: pointer;
+        }
+        [data-theme="dark"] .beachball-container { background: rgba(255,255,255,0.02); }
+        .beachball {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #333;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
+        }
+        /* Thrust fault pattern: cat-eye shape in the middle */
+        .beachball::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120%;
+            height: 50%;
+            background: #333; /* 擠壓區 */
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: height 0.5s ease;
+        }
+        .beachball-label {
+            margin-top: 15px;
+            font-weight: bold;
+            color: var(--primary-color);
+            transition: opacity 0.3s;
+        }
+        .beachball-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 5px;
+            max-width: 300px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: 0.4s ease;
+        }
+        /* 互動效果 */
+        .beachball-container:hover .beachball {
+            transform: rotate(15deg) scale(1.1);
+        }
+        .beachball-container:hover .beachball::before {
+            height: 80%; /* 擠壓區變大 */
+        }
+        .beachball-container:hover .beachball-desc {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div id="reading-progress"></div>
+    <!-- 導覽列 -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-earth-asia"></i> 2026 地震學回顧
+            </div>
+            <div class="nav-links">
+                <a href="index.html#hero">首頁</a>
+                <a href="index.html#timeline">課程時間軸</a>
+                <a href="index.html#assignments">作業成果</a>
+                <a href="index.html#reflection">學習反思</a>
+            </div>
+            <div style="display:flex; gap: 15px; align-items:center;">
+                <button class="theme-toggle" id="theme-toggle" title="切換深色/淺色模式">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 作業標題區塊 -->
+    <header class="assignment-hero">
+        <div class="container">
+            <a href="index.html#assignments" class="back-link"><i class="fa-solid fa-arrow-left"></i> 回到作業列表</a>
+            <h1 class="assignment-title">作業 8：繪製震源機制球</h1>
+            <p class="assignment-subtitle">分析日本岩手縣外海地震之成因，並結合地體構造資料探討斷層錯動機制。</p>
+        </div>
+    </header>
+
+    <!-- 內容區塊 -->
+    <main class="content-section">
+        
+        <div class="report-card">
+            <h2 class="report-title"><i class="fa-solid fa-bullseye"></i> 地震成因分析與震源機制探討</h2>
+            <div class="report-content">
+                
+                <p class="section-heading">一、 地震基本資訊與區域板塊構造</p>
+                <p>根據資料顯示，此次地震震央位於日本岩手縣宮古市 (Miyako) 東北東方 (ENE) 約 97.9 公里處的海域。鄰近受影響的城鎮包括宮古市、久慈市、山田町、大槌町與盛岡市等地。</p>
+                <p>在區域板塊構造上，震央位於日本海溝附近。這裡是太平洋板塊與北美板塊（鄂霍次克微板塊）的交界處。太平洋板塊正以每年 83-90 毫米的速度向西隱沒至北美板塊下方。</p>
+
+                <p class="section-heading">二、 地震成因分析</p>
+                <p>綜合震央位置與區域地體構造，此次地震的主要成因是太平洋板塊向北美板塊隱沒所導致的板塊擠壓與應力釋放。此區域常見的發震機制為隱沒帶上的板塊介面滑動（即大型逆衝區地震，Megathrust earthquake），這也是 2011 年日本東北大地震的成因。另一種可能則是隱沒板塊內部因彎曲變形而引發的板內地震 (Intraplate seismicity)。</p>
+
+                <!-- 互動式特效區塊 -->
+                <div class="beachball-container">
+                    <div class="beachball"></div>
+                    <div class="beachball-label"><i class="fa-solid fa-compress"></i> 逆衝斷層 (Thrust Fault) 機制</div>
+                    <div class="beachball-desc">黑色代表受壓區 (P軸所在)，白色代表張力區 (T軸所在)。滑鼠游標移入以觀察板塊擠壓的動態展示。</div>
+                </div>
+
+                <p class="section-heading">三、 震源機制與斷層錯動方向解釋</p>
+                <p>根據手繪震源機制球（Focal Mechanism）與此區的地體構造資料，我們進一步分析斷層的錯動方向：</p>
+                <p><strong>1. 斷層類型判斷：</strong>從震源機制球可以看出，中間區域通常為受壓區（通常畫實色或陰影），兩側為張力區，這屬於典型的逆衝斷層 (Thrust Fault/Reverse Fault) 特徵，與隱沒帶的擠壓環境完全吻合。</p>
+                <p><strong>2. 應力方向 (P軸與T軸)：</strong>最大的主壓應力軸 (P軸) 大致呈現東西向 (East-West) 或西北西-東南東向 (WNW-ESE) 的水平擠壓，這對應了太平洋板塊向西隱沒的相對運動方向。張力軸 (T軸) 則大致為垂直方向。</p>
+                <p><strong>3. 斷層面與錯動方向：</strong>震源機制球上的兩個節面 (Nodal planes) 中，其中一個代表實際的斷層面。結合日本海溝的隱沒帶幾何形狀，實際斷層面應為走向大致呈南北向、向西緩傾斜 (West-dipping)的板塊介面。在錯動方向上，上盤（北美板塊/鄂霍次克微板塊）相對於下盤（太平洋板塊）向上並向東逆衝滑移；或者可以看作太平洋板塊沿著此斷層面向西且向下錯動潛沒。這完美解釋了隱沒帶上典型的大型逆衝錯動機制。</p>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="https://huggingface.co/spaces/rrnn0518/moment_tensor" target="_blank" class="btn btn-primary" style="font-size: 1.1rem; padding: 12px 24px;">
+                        <i class="fa-solid fa-cube"></i> 前往互動式震源機制繪製網站 (Hugging Face Space)
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 頁尾 footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 地震學課程學習歷程回顧 | Designed with Antigravity & AI Tools</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

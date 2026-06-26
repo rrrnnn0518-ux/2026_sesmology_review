@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作業 1 - 軟體安裝與帳號申請 | 2026 地震學回顧</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .assignment-hero {
+            padding: 120px 20px 60px;
+            text-align: center;
+            background: var(--surface-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .assignment-title {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+        .assignment-subtitle {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .content-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .screenshot-card {
+            background: var(--surface-color);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
+        }
+        .screenshot-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+        }
+        .screenshot-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        .screenshot-img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-top: 15px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- 導覽列 -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-earth-asia"></i> 2026 地震學回顧
+            </div>
+            <div class="nav-links">
+                <a href="index.html#hero">首頁</a>
+                <a href="index.html#timeline">課程時間軸</a>
+                <a href="index.html#assignments">作業成果</a>
+                <a href="index.html#reflection">學習反思</a>
+            </div>
+            <div style="display:flex; gap: 15px; align-items:center;">
+                <button class="theme-toggle" id="theme-toggle" title="切換深色/淺色模式">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 作業標題區塊 -->
+    <header class="assignment-hero">
+        <div class="container">
+            <a href="index.html#assignments" class="back-link"><i class="fa-solid fa-arrow-left"></i> 回到作業列表</a>
+            <h1 class="assignment-title">作業 1：軟體安裝與帳號申請</h1>
+            <p class="assignment-subtitle">建立地震學課程需要的數位工具環境，並展示帳號申請與軟體安裝的成果。</p>
+        </div>
+    </header>
+
+    <!-- 內容區塊 -->
+    <main class="content-section">
+        
+        <div class="screenshot-card">
+            <h2 class="screenshot-title"><i class="fa-solid fa-terminal"></i> Antigravity 安裝截圖</h2>
+            <p>成功安裝並啟用 Antigravity 軟體，這是本學期協助撰寫與修改程式碼的重要輔助工具。</p>
+            <img src="images/antigravity安裝.png" alt="Antigravity 安裝截圖" class="screenshot-img">
+        </div>
+
+        <div class="screenshot-card">
+            <h2 class="screenshot-title"><i class="fa-brands fa-github"></i> GitHub 帳號申請</h2>
+            <p>建立 GitHub 帳號，用於程式碼版本控制，並透過 GitHub Pages 部署靜態學習網站。</p>
+            <img src="images/github安裝.png" alt="GitHub 帳號截圖" class="screenshot-img">
+        </div>
+
+        <div class="screenshot-card">
+            <h2 class="screenshot-title"><i class="fa-solid fa-face-smile"></i> Hugging Face 帳號申請</h2>
+            <p>建立 Hugging Face 帳號，為後續部屬 AI 互動問答與地震學展示工具做好準備。</p>
+            <img src="images/hugging_face安裝.png" alt="Hugging Face 帳號截圖" class="screenshot-img">
+        </div>
+
+    </main>
+
+    <!-- 頁尾 footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 地震學課程學習歷程回顧 | Designed with Antigravity & AI Tools</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
