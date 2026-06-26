@@ -294,3 +294,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// --- Interactive Widgets Logic ---
+
+// 1. Reading Progress Bar
+document.addEventListener('scroll', () => {
+    const progressBar = document.getElementById('reading-progress');
+    if (progressBar) {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        
+        // Calculate percentage
+        const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
+        progressBar.style.width = scrolled + '%';
+    }
+});
+
+// 2. Accordion
+document.addEventListener('DOMContentLoaded', () => {
+    const accordions = document.querySelectorAll('.accordion-header');
+    accordions.forEach(acc => {
+        acc.addEventListener('click', function() {
+            // Toggle active class on parent
+            this.parentElement.classList.toggle('active');
+        });
+    });
+});
