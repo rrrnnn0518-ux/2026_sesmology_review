@@ -350,8 +350,7 @@
                         <span class="tag tag-tool">#GitHub</span>
                         <span class="tag">#環境建置</span>
                     </div>
-                    <!-- 註解：未來可將 href="#" 替換為實際連結 -->
-                    <a href="#" class="btn btn-outline card-action">查看詳情</a>
+                    <a href="assignment1.html" class="btn btn-outline card-action">查看詳情</a>
                 </div>
 
                 <div class="card assignment-card">
@@ -419,17 +418,41 @@
                     <a href="assignment6.html" class="btn btn-outline card-action">閱讀演講心得</a>
                 </div>
 
-                <div class="card assignment-card">
-                    <div class="card-header">
-                        <span class="badge">作業 7</span>
+                <style>
+                    .earth-core-anim { position: relative; width: 60px; height: 60px; margin: 0 auto 15px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+                    .core { position: absolute; border-radius: 50%; opacity: 0.8; animation: pulseCore 2s infinite alternate; }
+                    .core.mantle { width: 100%; height: 100%; background: rgba(243, 156, 18, 0.4); animation-delay: 0s; border: 2px dashed #f39c12; }
+                    .core.outer { width: 65%; height: 65%; background: rgba(211, 84, 0, 0.5); animation-delay: 0.5s; }
+                    .core.inner { width: 35%; height: 35%; background: #c0392b; animation-delay: 1s; z-index: 2; box-shadow: 0 0 10px #c0392b; }
+                    @keyframes pulseCore { 0% { transform: scale(0.9); } 100% { transform: scale(1.1); } }
+                </style>
+                <div class="flip-card" style="height: 330px; margin: 0;">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front" style="align-items: flex-start; text-align: left; padding: 30px;">
+                            <div class="card-header" style="width: 100%;">
+                                <span class="badge">作業 7</span>
+                            </div>
+                            <h3 style="margin: 15px 0;">地震學第 3 章報告</h3>
+                            <p style="color: var(--text-light); margin-bottom: 20px; font-size: 0.95rem;">探討地震波如何傳遞，並利用地表震波資訊，反演出深不可測的地球內部構造。</p>
+                            <!-- 特效：地球內部構造同心圓 -->
+                            <div class="earth-core-anim">
+                                <div class="core mantle"></div>
+                                <div class="core outer"></div>
+                                <div class="core inner"></div>
+                            </div>
+                            <p style="margin-top: auto; color: var(--primary-color); font-weight: bold; font-size: 0.85rem; text-align: center; width: 100%;">滑鼠移入翻轉 <i class="fa-solid fa-arrow-rotate-right"></i></p>
+                        </div>
+                        <div class="flip-card-back" style="padding: 30px;">
+                            <i class="fa-solid fa-earth-americas flip-card-icon" style="font-size: 3rem;"></i>
+                            <h3 style="margin-bottom: 15px;">成果網站</h3>
+                            <p style="margin-bottom: 20px; font-size: 0.9rem;">已完整部署於 GitHub Pages</p>
+                            <div class="tags" style="justify-content: center; margin-bottom: 25px;">
+                                <span class="tag" style="background: rgba(255,255,255,0.2); color:white; border:none;">#走時曲線</span>
+                                <span class="tag" style="background: rgba(255,255,255,0.2); color:white; border:none;">#速度構造</span>
+                            </div>
+                            <a href="https://rrrnnn0518-ux.github.io/sesmology_ch3/#sec2" target="_blank" class="btn btn-outline" style="color: white; border-color: white;">前往成果網站</a>
+                        </div>
                     </div>
-                    <h3>地震學第 3 章報告</h3>
-                    <p>學習地震波走時曲線、地球內部速度構造、高低速層對波線的影響。</p>
-                    <div class="tags">
-                        <span class="tag">#走時曲線</span>
-                        <span class="tag">#速度構造</span>
-                    </div>
-                    <a href="https://rrrnnn0518-ux.github.io/sesmology_ch3/#sec2" target="_blank" class="btn btn-primary card-action">前往成果網站</a>
                 </div>
 
                 <div class="card assignment-card">
@@ -448,17 +471,39 @@
                     </div>
                 </div>
 
-                <div class="card assignment-card">
-                    <div class="card-header">
-                        <span class="badge">作業 9</span>
+                <style>
+                    .fault-anim-container { position: relative; width: 80px; height: 60px; margin: 0 auto 15px; }
+                    .fault-block { position: absolute; width: 40px; height: 40px; background: rgba(var(--primary-color-rgb), 0.1); border: 2px solid var(--primary-color); border-radius: 4px; }
+                    .fault-block.left { top: 0; left: 0; animation: slipLeft 2s infinite alternate ease-in-out; }
+                    .fault-block.right { top: 20px; left: 40px; background: rgba(var(--secondary-color-rgb), 0.1); border-color: var(--secondary-color); animation: slipRight 2s infinite alternate ease-in-out; }
+                    @keyframes slipLeft { 0% { transform: translateY(0); } 100% { transform: translateY(15px); } }
+                    @keyframes slipRight { 0% { transform: translateY(0); } 100% { transform: translateY(-15px); } }
+                </style>
+                <div class="flip-card" style="height: 330px; margin: 0;">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front" style="align-items: flex-start; text-align: left; padding: 30px;">
+                            <div class="card-header" style="width: 100%;">
+                                <span class="badge">作業 9</span>
+                            </div>
+                            <h3 style="margin: 15px 0;">地震學第4章報告</h3>
+                            <p style="color: var(--text-light); margin-bottom: 15px; font-size: 0.95rem;">探討震源機制、斷層錯動型態與地震矩，並結合互動式繪製系統。</p>
+                            <!-- 特效：斷層錯動動畫 -->
+                            <div class="fault-anim-container">
+                                <div class="fault-block left"></div>
+                                <div class="fault-block right"></div>
+                            </div>
+                            <p style="margin-top: auto; color: var(--primary-color); font-weight: bold; font-size: 0.85rem; text-align: center; width: 100%;">滑鼠移入翻轉 <i class="fa-solid fa-arrow-rotate-right"></i></p>
+                        </div>
+                        <div class="flip-card-back" style="padding: 25px; justify-content: center;">
+                            <i class="fa-solid fa-layer-group flip-card-icon" style="font-size: 2.2rem; margin-bottom: 10px;"></i>
+                            <h3 style="margin-bottom: 15px; font-size: 1.2rem;">雙重成果展示</h3>
+                            <p style="font-size: 0.85rem; margin-bottom: 15px;">請選擇您要前往的網站</p>
+                            <div style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
+                                <a href="https://rrrnnn0518-ux.github.io/sesmology_ch4/" target="_blank" class="btn btn-outline" style="color: white; border-color: white; padding: 8px;">理論介紹網頁</a>
+                                <a href="https://huggingface.co/spaces/rrnn0518/moment_tensor" target="_blank" class="btn btn-primary" style="padding: 8px; border: 1px solid white;">互動震源機制球 (HF Space)</a>
+                            </div>
+                        </div>
                     </div>
-                    <h3>地震學第4章 4.1 與 4.2 報告</h3>
-                    <p>整理震源機制相關理論，理解地震破裂、斷層型態與地震矩概念。</p>
-                    <div class="tags">
-                        <span class="tag">#地震矩</span>
-                        <span class="tag">#斷層型態</span>
-                    </div>
-                    <a href="#" class="btn btn-outline card-action">查看詳情</a>
                 </div>
 
                 <div class="card assignment-card">
@@ -478,15 +523,20 @@
                 <div class="card assignment-card">
                     <div class="card-header">
                         <span class="badge">作業 11</span>
-                        <span class="badge" style="background:#28a745">期末成果</span>
+                        <span class="badge" style="background:#28a745">期末專題</span>
                     </div>
-                    <h3>期末報告</h3>
-                    <p>整合整學期學習內容，製作期末成果展示網站。</p>
+                    <h3>Raspberry Pi 地震觀測站</h3>
+                    <p>基於 Raspberry Pi 與 MPU6050 建構微型地震觀測站，實作 STA/LTA 觸發演算法與 Discord 即時速報。</p>
                     <div class="tags">
-                        <span class="tag">#綜合應用</span>
-                        <span class="tag tag-tool">#網頁部署</span>
+                        <span class="tag tag-tool">#RaspberryPi</span>
+                        <span class="tag tag-tool">#MPU6050</span>
+                        <span class="tag">#STA/LTA</span>
+                        <span class="tag">#IoT</span>
                     </div>
-                    <a href="https://oceanicdayi.github.io/2026_seismology_final_report/" target="_blank" class="btn btn-primary card-action">前往成果網站</a>
+                    <div style="display: flex; gap: 10px; width: 100%;">
+                        <a href="assignment11.html" class="btn btn-primary card-action" style="flex: 1;">詳細報告與互動工具</a>
+                        <a href="https://oceanicdayi.github.io/raspberrypi_seismology/" target="_blank" class="btn btn-outline card-action" style="flex: 1;">教材網站</a>
+                    </div>
                 </div>
 
             </div>
