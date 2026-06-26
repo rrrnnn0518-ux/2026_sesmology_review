@@ -321,3 +321,71 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// --- Seismic Wave Interactive Feature ---
+document.addEventListener('DOMContentLoaded', () => {
+    const seismicArea = document.getElementById('seismic-area');
+    const rippleContainer = document.getElementById('ripple-container');
+    
+    if (seismicArea && rippleContainer) {
+        const harvests = [
+            "�Ƿ|�Fø�s���骺�_������y�I",
+            "�z�ѤF P�i/S�i ���ǻ���z",
+            "�ˤⱵ�u�ñҥΤF MPU6050 �P�����I",
+            "��@�F STA/LTA �a�_Ĳ�o�t��k",
+            "���\�N�a�_�t�������� Discord�I",
+            "�J�A�F Raspberry Pi �����P�X�ʵ{�����D",
+            "����F�N Python �{�����p�춳�� (Hugging Face)",
+            "�ѳX�F��a�a�_�u�{��s����",
+            "�Ƿ|�F�p���@�~�ܦ���������ʺ����I",
+            "�o�{�F nmcli ���O���j�j�P���I (�t�I�s��P�Ǫ����!)"
+        ];
+
+        seismicArea.addEventListener('click', (e) => {
+            // Get click coordinates relative to the container
+            const rect = seismicArea.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            // Remove previous ripples/text if any (keep it clean)
+            rippleContainer.innerHTML = '';
+
+            // 1. Create Ripple
+            const ripple = document.createElement('div');
+            ripple.classList.add('seismic-ripple');
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.style.width = '100px';
+            ripple.style.height = '100px';
+            
+            // 2. Create inner ripple for double-wave effect
+            const ripple2 = document.createElement('div');
+            ripple2.classList.add('seismic-ripple');
+            ripple2.style.left = x + 'px';
+            ripple2.style.top = y + 'px';
+            ripple2.style.width = '60px';
+            ripple2.style.height = '60px';
+            ripple2.style.animationDelay = '0.3s';
+
+            // 3. Create Harvest Text
+            const harvestText = document.createElement('div');
+            harvestText.classList.add('harvest-reveal');
+            harvestText.style.left = x + 'px';
+            harvestText.style.top = (y - 30) + 'px'; // slightly above center
+            
+            const randomHarvest = harvests[Math.floor(Math.random() * harvests.length)];
+            harvestText.innerHTML = <i class="fa-solid fa-graduation-cap" style="color:var(--primary-color);"></i>  + randomHarvest;
+
+            // Append to container
+            rippleContainer.appendChild(ripple);
+            rippleContainer.appendChild(ripple2);
+            rippleContainer.appendChild(harvestText);
+            
+            // Remove ripple elements after animation to prevent DOM bloat
+            setTimeout(() => {
+                if (ripple.parentElement) ripple.remove();
+                if (ripple2.parentElement) ripple2.remove();
+            }, 3000);
+        });
+    }
+});
