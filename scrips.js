@@ -5,22 +5,27 @@ const htmlEl = document.documentElement;
 // Check saved theme or system preference
 const savedTheme = localStorage.getItem('theme') || 'light';
 htmlEl.setAttribute('data-theme', savedTheme);
-updateThemeIcon(savedTheme);
 
-themeToggle.addEventListener('click', () => {
-    const currentTheme = htmlEl.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    htmlEl.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateThemeIcon(newTheme);
-});
+if (themeToggle) {
+    updateThemeIcon(savedTheme);
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        htmlEl.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+    });
+}
 
 function updateThemeIcon(theme) {
+    if (!themeToggle) return;
     const icon = themeToggle.querySelector('i');
-    if (theme === 'dark') {
-        icon.classList.replace('fa-moon', 'fa-sun');
-    } else {
-        icon.classList.replace('fa-sun', 'fa-moon');
+    if (icon) {
+        if (theme === 'dark') {
+            icon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            icon.classList.replace('fa-sun', 'fa-moon');
+        }
     }
 }
 
@@ -28,51 +33,61 @@ function updateThemeIcon(theme) {
 const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 
-menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    const icon = menuToggle.querySelector('i');
-    if(navLinks.classList.contains('active')){
-        icon.classList.replace('fa-bars', 'fa-xmark');
-    }else{
-        icon.classList.replace('fa-xmark', 'fa-bars');
-    }
-});
-
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
+if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
         const icon = menuToggle.querySelector('i');
-        if(icon) icon.classList.replace('fa-xmark', 'fa-bars');
+        if (icon) {
+            if(navLinks.classList.contains('active')){
+                icon.classList.replace('fa-bars', 'fa-xmark');
+            }else{
+                icon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        }
     });
-});
+}
+
+if (navLinks) {
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            if (menuToggle) {
+                const icon = menuToggle.querySelector('i');
+                if(icon) icon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        });
+    });
+}
 
 // Timeline Filter
 const filterBtns = document.querySelectorAll('.filter-btn');
 const timelineItems = document.querySelectorAll('.timeline-item');
 
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+if (filterBtns.length > 0) {
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
 
-        const filterValue = btn.getAttribute('data-filter');
+            const filterValue = btn.getAttribute('data-filter');
 
-        timelineItems.forEach(item => {
-            if (filterValue === 'all') {
-                item.style.display = 'block';
-                setTimeout(()=> item.style.opacity = '1', 50);
-            } else {
-                if (item.getAttribute('data-category').includes(filterValue)) {
+            timelineItems.forEach(item => {
+                if (filterValue === 'all') {
                     item.style.display = 'block';
                     setTimeout(()=> item.style.opacity = '1', 50);
                 } else {
-                    item.style.opacity = '0';
-                    setTimeout(()=> item.style.display = 'none', 400);
+                    if (item.getAttribute('data-category').includes(filterValue)) {
+                        item.style.display = 'block';
+                        setTimeout(()=> item.style.opacity = '1', 50);
+                    } else {
+                        item.style.opacity = '0';
+                        setTimeout(()=> item.style.display = 'none', 400);
+                    }
                 }
-            }
+            });
         });
     });
-});
+}
 
 // Assignment Search
 const searchInput = document.getElementById('search-input');
@@ -80,6 +95,7 @@ const searchBtn = document.getElementById('search-btn');
 const assignmentCards = document.querySelectorAll('.assignment-card');
 
 function filterAssignments() {
+    if (!searchInput) return;
     const query = searchInput.value.toLowerCase();
     assignmentCards.forEach(card => {
         const text = card.innerText.toLowerCase();
@@ -91,32 +107,36 @@ function filterAssignments() {
     });
 }
 
-searchBtn.addEventListener('click', filterAssignments);
-searchInput.addEventListener('keyup', (e) => {
-    if (e.key === 'Enter') filterAssignments();
-});
+if (searchBtn && searchInput) {
+    searchBtn.addEventListener('click', filterAssignments);
+    searchInput.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') filterAssignments();
+    });
+}
 
 // Random Harvest
 const harvestBtn = document.getElementById('harvest-btn');
 const harvestText = document.getElementById('harvest-text');
 const harvests = [
-    "我學會了用地震波理解地球內部構造。",
-    "我第一次把課程作業部署成網頁，非常有成就感！",
-    "我理解了震源機制球如何連結斷層運動。",
-    "我發現 AI 工具可以協助我整理、反思與呈現學習成果。",
-    "我認識到地震學不只是理論，也和防災、工程、觀測與社會應用有關。",
-    "參訪氣象署和國震中心，讓我看到課本知識在現實中的重量。",
-    "透過 Raspberry Pi 自製地震儀，我親手體驗了硬體與觀測結合的樂趣。"
+    "學會了繪製立體的震源機制球！",
+    "理解了 P波/S波 的傳遞原理",
+    "親手接線並啟用了 MPU6050 感測器！",
+    "實作了 STA/LTA 地震觸發演算法",
+    "成功將地震速報推播到 Discord！",
+    "克服了 Raspberry Pi 掉壓與驅動程式問題",
+    "體驗了將 Python 程式部署到雲端 (Hugging Face)"
 ];
 
-harvestBtn.addEventListener('click', () => {
-    harvestText.style.opacity = 0;
-    setTimeout(() => {
-        const randomIndex = Math.floor(Math.random() * harvests.length);
-        harvestText.innerText = harvests[randomIndex];
-        harvestText.style.opacity = 1;
-    }, 300);
-});
+if (harvestBtn && harvestText) {
+    harvestBtn.addEventListener('click', () => {
+        harvestText.style.opacity = 0;
+        setTimeout(() => {
+            const randomIndex = Math.floor(Math.random() * harvests.length);
+            harvestText.innerText = harvests[randomIndex];
+            harvestText.style.opacity = 1;
+        }, 300);
+    });
+}
 
 // Copy iframe code
 const copyIframeBtn = document.getElementById('copy-iframe');
@@ -125,7 +145,7 @@ if (copyIframeBtn) {
         const iframeCode = `<iframe src="https://hf.space/embed/your-username/your-space-name" width="100%" height="450" frameborder="0"></iframe>`;
         navigator.clipboard.writeText(iframeCode).then(() => {
             const originalText = copyIframeBtn.innerHTML;
-            copyIframeBtn.innerHTML = '<i class="fa-solid fa-check"></i> 程式碼已複製！';
+            copyIframeBtn.innerHTML = '<i class="fa-solid fa-check"></i> 複製成功！';
             copyIframeBtn.style.background = 'var(--primary-color)';
             copyIframeBtn.style.color = '#fff';
             
@@ -141,34 +161,34 @@ if (copyIframeBtn) {
 // Quiz Logic
 const quizData = [
     {
-        q: "P 波和 S 波的主要差異是什麼？",
-        options: ["P波是橫波，S波是縱波", "P波速度較快，S波速度較慢", "P波只能在固體中傳播", "S波破壞力通常較小"],
+        q: "P 波與 S 波的主要差異是什麼？",
+        options: ["P波是橫波，S波是縱波", "P波速度較快，S波速度較慢", "P波無法在液體中傳播", "S波造成的破壞通常較小"],
         ans: 1,
-        feedback: "答對了！P波（Primary wave）是縱波，速度最快；S波（Secondary wave）是橫波，速度較慢且只能在固體中傳播。"
+        feedback: "答對了！P波（Primary wave）是縱波，速度最快；S波（Secondary wave）是橫波，速度較慢且無法在液體中傳播。"
     },
     {
-        q: "震源機制球可以用來判斷什麼？",
-        options: ["地震規模的大小", "斷層的錯動型態", "地震發生的確切時間", "地震波的傳遞速度"],
+        q: "震度與規模可以用來表示什麼？",
+        options: ["規模代表破壞程度", "震度代表感受程度", "規模會隨觀測點而不同", "規模與波速成正比"],
         ans: 1,
-        feedback: "正確！震源機制球可以幫助我們判斷斷層面走向、傾角及滑動方向（正斷層、逆斷層、平移斷層）。"
+        feedback: "沒錯！震度是各地感受到的搖晃程度，規模則是地震釋放能量的大小（只有一個值）。"
     },
     {
-        q: "ScS 波中的 c 代表什麼？",
-        options: ["Core (地核)", "Crust (地殼)", "CMB (核幔邊界反射)", "Compression (壓縮)"],
+        q: "ScS 波中的 c 代表什麼意思？",
+        options: ["Core (地核)", "Crust (地殼)", "CMB (地函地核邊界)", "Compression (壓力波)"],
         ans: 2,
-        feedback: "沒錯！小寫的 'c' 代表地震波在核幔邊界（Core-Mantle Boundary）發生反射。"
+        feedback: "沒錯，英文中的 'c' 代表該波在 CMB（Core-Mantle Boundary）反射。"
     },
     {
-        q: "Raspberry Pi 自製地震儀可能需要哪些感測器？",
-        options: ["溫度感測器", "MPU6050 (加速度計與陀螺儀)", "光敏電阻", "濕度感測器"],
+        q: "Raspberry Pi 自製地震觀測站中，通常使用哪一個感測器？",
+        options: ["溫度感測器", "MPU6050 (加速度計與陀螺儀)", "超音波感測器", "濕度感測器"],
         ans: 1,
-        feedback: "正確！MPU6050 包含三軸加速度計，可以偵測地表的微小震動。"
+        feedback: "答對了！MPU6050 內含三軸加速度計，可以用來偵測晃動。"
     },
     {
-        q: "走時曲線 (Travel-time curve) 可以幫助我們了解什麼？",
-        options: ["地震發生的歷史", "斷層的長度", "地球內部的速度構造", "海嘯的高度"],
+        q: "走時曲線 (Travel-time curve) 可以用來推估什麼？",
+        options: ["地震的震源機制", "震央的距離", "各層介質的速度結構與深度", "斷層的剪切應力"],
         ans: 2,
-        feedback: "非常好！藉由觀測不同震央距離的地震波到達時間，可以推算出地球內部的波速分佈及構造。"
+        feedback: "非常棒！藉由觀測不同測站所記錄到之震波抵達時間，可以反推地下介質的波速結構。"
     }
 ];
 
@@ -212,7 +232,7 @@ function checkAnswer(selectedIndex, btnElement) {
     } else {
         btnElement.classList.add('wrong');
         options[correctIndex].classList.add('correct');
-        quizFeedbackEl.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> 答錯囉！${quizData[currentQuiz].feedback}`;
+        quizFeedbackEl.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> 答錯了！${quizData[currentQuiz].feedback}`;
         quizFeedbackEl.style.color = '#dc3545';
     }
 
@@ -233,18 +253,18 @@ if (nextQuizBtn) {
             currentQuiz++;
             loadQuiz();
         } else {
-            quizQuestionEl.innerText = "🎉 測驗結束！";
+            quizQuestionEl.innerText = "測驗結束！";
             quizOptionsEl.innerHTML = '';
             quizFeedbackEl.style.display = 'none';
             nextQuizBtn.style.display = 'none';
-            quizScoreEl.innerText = `你的總分：${score} / ${quizData.length}`;
+            quizScoreEl.innerText = `您的總得分：${score} / ${quizData.length}`;
             quizScoreEl.style.display = 'block';
             
             // Add restart button
             const restartBtn = document.createElement('button');
             restartBtn.className = 'btn btn-outline';
             restartBtn.style.marginTop = '15px';
-            restartBtn.innerText = '再測一次';
+            restartBtn.innerText = '重新測驗';
             restartBtn.onclick = () => {
                 currentQuiz = 0;
                 score = 0;
@@ -277,9 +297,11 @@ window.addEventListener('scroll', () => {
     }
 });
 
-backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
 
 // Smooth Scroll for Navigation Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -329,16 +351,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (seismicArea && rippleContainer) {
         const harvests = [
-            "�Ƿ|�Fø�s���骺�_������y�I",
-            "�z�ѤF P�i/S�i ���ǻ���z",
-            "�ˤⱵ�u�ñҥΤF MPU6050 �P�����I",
-            "��@�F STA/LTA �a�_Ĳ�o�t��k",
-            "���\�N�a�_�t�������� Discord�I",
-            "�J�A�F Raspberry Pi �����P�X�ʵ{�����D",
-            "����F�N Python �{�����p�춳�� (Hugging Face)",
-            "�ѳX�F��a�a�_�u�{��s����",
-            "�Ƿ|�F�p���@�~�ܦ���������ʺ����I",
-            "�o�{�F nmcli ���O���j�j�P���I (�t�I�s��P�Ǫ����!)"
+            "學會了繪製立體的震源機制球！",
+            "理解了 P波/S波 的傳遞原理",
+            "親手接線並啟用了 MPU6050 感測器！",
+            "實作了 STA/LTA 地震觸發演算法",
+            "成功將地震速報推播到 Discord！",
+            "克服了 Raspberry Pi 掉壓與驅動程式問題",
+            "體驗了將 Python 程式部署到雲端 (Hugging Face)",
+            "參訪了國家地震工程研究中心",
+            "學會了如何把作業變成精美的互動網頁！",
+            "發現了 nmcli 指令的強大與盲點 (差點連到同學的手機!)"
         ];
 
         seismicArea.addEventListener('click', (e) => {
@@ -374,7 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
             harvestText.style.top = (y - 30) + 'px'; // slightly above center
             
             const randomHarvest = harvests[Math.floor(Math.random() * harvests.length)];
-            harvestText.innerHTML = <i class="fa-solid fa-graduation-cap" style="color:var(--primary-color);"></i>  + randomHarvest;
+            harvestText.innerHTML = `<i class="fa-solid fa-graduation-cap" style="color:var(--primary-color);"></i> ` + randomHarvest;
 
             // Append to container
             rippleContainer.appendChild(ripple);
