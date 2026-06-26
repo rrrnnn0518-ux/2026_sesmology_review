@@ -450,13 +450,13 @@
 
         <!-- 開發小插曲 -->
         <div class="report-card" style="background: rgba(255, 165, 2, 0.05); border-left: 5px solid #ffa502;">
-            <h2 class="report-title" style="color: #ffa502;"><i class="fa-solid fa-lightbulb"></i> 開發小插曲：Wi-Fi 盲點與驚喜</h2>
+            <h2 class="report-title" style="color: #ffa502;"><i class="fa-solid fa-lightbulb"></i> 開發小插曲：意外的「測站」定位</h2>
             <div class="report-body">
-                <p>在沒有外接螢幕的無介面 (Headless) 環境中，我們嘗試使用 <code>nmcli</code> 指令來掃描周遭的 Wi-Fi 網路。這個原本只是用來連接主力網路的例行公事，卻發生了意外的插曲：</p>
+                <p>在製作與測試儀器時，我們因為環境限制，全程都是連著同學的手機網路熱點進行開發。這時我們突發奇想，想看看能不能透過網路設定，把目前「測站」的位置自動標示出來，當作觀測點的座標：</p>
                 <p style="font-style: italic; color: var(--text-light); border-left: 3px solid var(--border-color); padding-left: 15px; margin: 15px 0;">
-                    「在測試指令 <code>nmcli</code> 掃描時，曾意外抓取到身旁同學的手機熱點，甚至差點將其設為測站主力網路，展現了終端指令掃描的強大與盲點。」
+                    「結果抓取產生的定位，竟然完全不是我們實際所在的教室位置，而是同學所使用的電信網路『中央基地台』的機房位置！」
                 </p>
-                <p>這讓我們深刻體會到，雖然命令列工具賦予了開發者無比的彈性與底層控制力，但在「盲操作」時，也需要更加謹慎地確認掃描到的 SSID，以避免將觀測站的命脈（網路連線）綁定在一個隨時會下課離開的同學手機上！</p>
+                <p>這個有趣的插曲讓我們學到了一課：依賴手機網路 IP 進行地理定位時，往往只能抓到 ISP 業者的實體機房或基地台節點。若要架設高精度的地震觀測站，未來勢必還是得外加真實的 GPS 模組來獲取經緯度！</p>
             </div>
         </div>
 
