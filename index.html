@@ -282,7 +282,7 @@
                             <li>地震儀與地震規模介紹</li>
                             <li>AI 代理群與大型語言模型在次世代地震測報之整合與應用</li>
                         </ul>
-                        <a href="https://oceanicdayi.github.io/2026_seismology_final_report/" target="_blank" class="timeline-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 作業11：期末報告 (前往網站)</a>
+                        <a href="assignment11.html" class="timeline-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 作業11：期末報告 (查看詳情)</a>
                     </div>
                 </div>
 
@@ -610,49 +610,19 @@
         </div>
     </section>
 
-    <!-- Hugging Face Space 互動專區 -->
+    <!-- 地震波互動特效專區 -->
     <section id="interactive" class="section-bg">
         <div class="container">
-            <h2 class="section-title">互動專區</h2>
+            <h2 class="section-title">互動專區：點擊產生震波</h2>
             
-            <div class="interactive-layout">
-                <!-- 左側：Hugging Face 預留區 -->
-                <div class="interactive-box">
-                    <h3><i class="fa-solid fa-comment-dots"></i> 地震學 AI 問答助手</h3>
-                    <p style="margin-bottom: 15px; color: var(--text-light); font-size:0.9rem;">在這裡可以輸入地震學問題，AI 助手將即時為您解答。（嵌入自 Hugging Face Space）</p>
-                    
-                    <div class="iframe-container">
-                        <div class="iframe-placeholder">
-                            <i class="fa-solid fa-code" style="font-size: 3rem; margin-bottom: 10px;"></i>
-                            <p>Hugging Face Space 載入區</p>
-                            <p style="font-size: 0.8rem;">(請在 index.html 中替換 iframe src 連結)</p>
-                        </div>
-                        <!-- 註解：請將 src 替換為您的 Hugging Face Space 網址 -->
-                        <!-- <iframe src="https://hf.space/embed/your-username/your-space-name" frameborder="0"></iframe> -->
-                    </div>
-                    <button class="copy-btn" id="copy-iframe"><i class="fa-solid fa-copy"></i> 複製 iframe 程式碼</button>
+            <div class="seismic-interactive-area" id="seismic-area">
+                <div class="seismic-instructions">
+                    <i class="fa-solid fa-hand-pointer" style="font-size: 2rem; margin-bottom: 15px; display: block; color: var(--primary-color);"></i>
+                    在下方區域任意點擊，模擬震源釋放能量，<br>震波散開後將浮現我這學期的學習收穫！
                 </div>
-
-                <!-- 右側：互動小測驗與進度 -->
-                <div class="interactive-box" style="display: flex; flex-direction: column;">
-                    <h3><i class="fa-solid fa-pen-to-square"></i> 震源機制小測驗</h3>
-                    <div class="quiz-container">
-                        <h4 id="quiz-question" class="quiz-question active">載入中...</h4>
-                        <div id="quiz-options" class="quiz-options"></div>
-                        <p id="quiz-feedback" style="margin-top: 15px; font-weight: bold; display: none;"></p>
-                        <div class="quiz-controls">
-                            <button id="next-quiz" class="btn btn-primary" style="display: none; padding: 8px 16px;">下一題</button>
-                            <h4 id="quiz-score" style="display: none; color: var(--primary-color);"></h4>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: auto; padding-top: 40px;">
-                        <h3><i class="fa-solid fa-lightbulb"></i> 我這學期學到了什麼？</h3>
-                        <div class="random-harvest">
-                            <button id="harvest-btn" class="btn btn-outline">點擊隨機顯示學習收穫</button>
-                            <div id="harvest-text">探索地震學與科技的奧秘...</div>
-                        </div>
-                    </div>
+                
+                <div class="ripple-container" id="ripple-container">
+                    <!-- 點擊產生的波紋與文字會注入這裡 -->
                 </div>
             </div>
         </div>
