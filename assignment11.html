@@ -448,6 +448,18 @@
             </div>
         </div>
 
+        <!-- 開發小插曲 -->
+        <div class="report-card" style="background: rgba(255, 165, 2, 0.05); border-left: 5px solid #ffa502;">
+            <h2 class="report-title" style="color: #ffa502;"><i class="fa-solid fa-lightbulb"></i> 開發小插曲：Wi-Fi 盲點與驚喜</h2>
+            <div class="report-body">
+                <p>在沒有外接螢幕的無介面 (Headless) 環境中，我們嘗試使用 <code>nmcli</code> 指令來掃描周遭的 Wi-Fi 網路。這個原本只是用來連接主力網路的例行公事，卻發生了意外的插曲：</p>
+                <p style="font-style: italic; color: var(--text-light); border-left: 3px solid var(--border-color); padding-left: 15px; margin: 15px 0;">
+                    「在測試指令 <code>nmcli</code> 掃描時，曾意外抓取到身旁同學的手機熱點，甚至差點將其設為測站主力網路，展現了終端指令掃描的強大與盲點。」
+                </p>
+                <p>這讓我們深刻體會到，雖然命令列工具賦予了開發者無比的彈性與底層控制力，但在「盲操作」時，也需要更加謹慎地確認掃描到的 SSID，以避免將觀測站的命脈（網路連線）綁定在一個隨時會下課離開的同學手機上！</p>
+            </div>
+        </div>
+
         <!-- 7. 結論 -->
         <div class="report-card">
             <h2 class="report-title"><i class="fa-solid fa-flag-checkered"></i> 5. 結論與未來展望</h2>
